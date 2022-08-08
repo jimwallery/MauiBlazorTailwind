@@ -1,0 +1,43 @@
+﻿<header class="bg-gray-900 sm:flex sm:justify-between shadow-lg ">
+    <div class="flex items-center justify-between px-10 py-4">
+        <div>
+            <img class="h-8" src="img/logo-inverted.svg" alt="inverted logo" />
+        </div>
+        <div class="sm:hidden">
+           <button type="button" class="text-gray-500 hover:text-white focus:text-white focus:outline-none" @onclick="ToggleNavMenu">
+               @if(!collapseNavMenu){
+                    <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" />
+                        @*<path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />*@
+                    </svg>
+               } else{
+                    <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                        @*<path fill-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" />*@
+                        <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+                    </svg>
+               }
+                
+           </button>        
+        </div>
+    </div>
+    <div class="@NavMenuCssClass px-4 pt-4 pb-4" @onclick="ToggleNavMenu">
+        <nav class="ml-10 font-semibold text-gray-600 dark:text-gray-300 text-lg">
+            <NavLink ActiveClass="text-purple-800 dark:text-purple-400" href="" Match="NavLinkMatch.All" class="block sm:inline-block sm:ml-2 px-2 py-1 rounded py-1 hover:bg-gray-800 mr-10 font-semibold sm:mt-0">Home</NavLink>
+            <NavLink ActiveClass="text-purple-800 dark:text-purple-400" href="counter" class="block sm:inline-block sm:ml-2 px-2 py-1 rounded hover:bg-gray-800 mr-10 font-semibold ">Counter</NavLink>
+            <NavLink ActiveClass="text-purple-800 dark:text-purple-400" href="fetchdata" class="block sm:inline-block sm:ml-2 px-2 py-1 rounded hover:bg-gray-800 font-semibold">Fetch data</NavLink>
+            <NavLink ActiveClass="text-purple-800 dark:text-purple-400" href="https://docs.microsoft.com/aspnet/" target="_blank" class="block sm:inline-block sm:ml-2 px-2 py-1 rounded hover:bg-gray-800 font-semibold">About</NavLink>
+        </nav>        
+    </div>
+</header>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    //switched to "hidden" tailwind css from "collapse" bootstrap css
+    private string NavMenuCssClass => collapseNavMenu ? "hidden" : null;
+
+	private void ToggleNavMenu()
+	{
+		collapseNavMenu = !collapseNavMenu;
+	}
+}

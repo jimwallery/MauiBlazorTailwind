@@ -1,0 +1,137 @@
+﻿@using MauiBlazorTailwindDemo.Models
+
+    @foreach(var property in Properties)
+    {
+        <div class="mt-8">
+            <div class="relative pb-5/6">
+                <img class="absolute h-full w-full object-cover rounded-lg shadow-md" src=@property.ImageUrl alt="property.imageAlt">
+            </div>
+            <div class="relative px-4 -mt-16">
+                <div class="bg-gray-200 p-6 rounded-lg shadow-lg">
+                    <div class="flex items-baseline">
+                    <span class="inline-block bg-teal-200 text-teal-800 text-xs px-2 rounded-full uppercase font-semibold tracking-wide">New</span>
+                        <div class="ml-2 text-gray-600 text-xs uppercase font-semibold tracking-wide">
+                            @property.Beds beds &bull; @property.Baths baths
+                        </div>
+                    </div>
+                    <h4 class="mt-1 font-semibold text-lg leading-tight truncate"> @property.Title </h4>
+                    <div class="mt-1">
+                         @property.FormattedPrice 
+                        <span class="text-gray-600 text-sm"> / wk</span>
+                    </div>
+                    <div class="mt-2 flex items-center">
+                        @for(int i = 0; i < 5; i++)
+                        {
+                            if(i < property.Rating)
+                            {
+                            <svg class="h-4 w-4 fill-current text-teal-500" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.133 20.333c-1.147.628-2.488-.387-2.269-1.718l.739-4.488-3.13-3.178c-.927-.943-.415-2.585.867-2.78l4.324-.654 1.934-4.083a1.536 1.536 0 0 1 2.804 0l1.934 4.083 4.324.655c1.282.194 1.794 1.836.866 2.78l-3.129 3.177.739 4.488c.219 1.331-1.122 2.346-2.269 1.718L12 18.214l-3.867 2.119z" fill-rule="evenodd" />
+                            </svg>
+                            }
+                            else
+                            {
+                            <svg class="h-4 w-4 fill-current text-gray-400" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.133 20.333c-1.147.628-2.488-.387-2.269-1.718l.739-4.488-3.13-3.178c-.927-.943-.415-2.585.867-2.78l4.324-.654 1.934-4.083a1.536 1.536 0 0 1 2.804 0l1.934 4.083 4.324.655c1.282.194 1.794 1.836.866 2.78l-3.129 3.177.739 4.488c.219 1.331-1.122 2.346-2.269 1.718L12 18.214l-3.867 2.119z" fill-rule="evenodd" />
+                            </svg>
+                            }
+                        
+                        }
+                        <span class="ml-2 text-gray-600 text-sm"> @property.ReviewCount  reviews</span>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    }
+    
+
+
+@code {
+       List<Property> Properties = new List<Property>
+        {
+            new Property
+            {
+                ImageUrl = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                ImageAlt = "Rear view of modern home with pool",
+                Beds = 3,
+                Baths = 2,
+                Title = "Modern home in city center",
+                PriceInCents = 190000,
+                FormattedPrice = "$1,900.00",
+                ReviewCount = 34,
+                Rating = 4,
+            },
+             new Property
+            {
+                ImageUrl = "/img/toronto.jpg",
+                ImageAlt = "Toronto skyline",
+                Beds = 3,
+                Baths = 2,
+                Title = "Toronto",
+                PriceInCents = 2150,
+                FormattedPrice = "$2,150.00",
+                ReviewCount = 76,
+                Rating = 3,
+            },
+            new Property
+            {
+                ImageUrl = "/img/malibu.jpg",
+                ImageAlt = "Cliff in Malibu",
+                Beds = 1,
+                Baths = 1,
+                Title = "Malibu",
+                PriceInCents = 1200,
+                FormattedPrice = "$1,200.00",
+                ReviewCount = 43,
+                Rating = 3,
+            },
+             new Property
+            {
+                ImageUrl = "/img/chicago.jpg",
+                ImageAlt = "Chicago skyline",
+                Beds = 1,
+                Baths = 1,
+                Title = "Chicago",
+                PriceInCents = 1100,
+                FormattedPrice = "$1,100.00",
+                ReviewCount = 115,
+                Rating = 3,
+            },
+            new Property
+            {
+                ImageUrl = "/img/seattle.jpg",
+                ImageAlt = "Seattle skyline",
+                Beds = 1,
+                Baths = 1,
+                Title = "Seattle",
+                PriceInCents = 1350,
+                FormattedPrice = "$1,350.00",
+                ReviewCount = 63,
+                Rating = 5,
+            },
+            new Property
+            {
+                ImageUrl = "/img/colorado.jpg",
+                ImageAlt = "Lake in Colorado",
+                Beds = 1,
+                Baths = 1,
+                Title = "Colorado",
+                PriceInCents = 850,
+                FormattedPrice = "$850.00",
+                ReviewCount = 47,
+                Rating = 4,
+            },
+            new Property
+            {
+                ImageUrl = "/img/miami.jpg",
+                ImageAlt = "Beach in Miami",
+                Beds = 1,
+                Baths = 1,
+                Title = "Miami",
+                PriceInCents = 1150,
+                FormattedPrice = "$1,150.00",
+                ReviewCount = 86,
+                Rating = 2,
+            },
+        };
+}

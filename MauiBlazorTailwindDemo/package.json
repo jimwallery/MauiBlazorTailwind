@@ -1,0 +1,20 @@
+{
+  "name": "mauiblazortailwinddemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "buildcss": "tailwind build -i Styles/app.css -o wwwroot/css/styles/app.min.css"
+  },
+  "author": "Jim Wallery",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.8",
+    "post-cli": "^1.0.5",
+    "tailwindcss": "^3.1.7"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.14",
+    "postcss-cli": "^10.0.0"
+  }
+}

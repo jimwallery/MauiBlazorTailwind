@@ -1,0 +1,63 @@
+﻿@page "/counter"
+@using MauiBlazorTailwindDemo.Components
+@using MauiBlazorTailwindDemo.Models
+
+<PageTitle>Counter</PageTitle>
+
+<div class="block sm:flex flex-grow">
+    <div class="w-1/2 m-16">
+        <h1 class="focus:outline-none">Counter</h1>
+
+        <p class="mb-10">Current count: @currentCount</p>
+
+        <button @onclick="IncrementCount" class="focus:outline-none bg-gradient-to-br from-purple-500 to-purple-600 px-4 py-2 rounded text-purple-50 transition duration-300 ease-in-out transform hover:scale-150">Click me</button>
+        <button @onclick="CheckInternet" class="mt-2 mr-5 focus:outline-none bg-gradient-to-br from-blue-500 to-blue-600 px-4 py-2 rounded text-blue-50 transition duration-300 ease-in-out transform hover:scale-150">Check internet</button>
+
+        <CustomerList />
+        <PropertyCard />
+        @*@foreach(var property in properties){
+            <PropertyCard @CurrentProperty="property" />
+        }*@
+    </div>
+    <div class="w-1/2 m-16">
+        <Tailwind />
+    </div>
+</div>
+@code {
+    private int currentCount = 0;
+    //private List<Property> properties;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+    private async void CheckInternet()
+    {
+        var access = Microsoft.Maui.Networking.Connectivity.Current.NetworkAccess;
+        
+        var hasInternet = access == NetworkAccess.Internet;
+
+        await MauiBlazorTailwindDemo.App.Current.MainPage.DisplayAlert("Internet check", $"Is there internet? {hasInternet}", "OK");
+    }
+    //protected override void OnInitialized()
+    //{
+    //    base.OnInitialized();
+
+    //    properties = new List<Property>
+    //    {
+    //        new Property
+    //        {
+    //            ImageUrl = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    //            ImageAlt = "Rear view of modern home with pool",
+    //            Beds = 3,
+    //            Baths = 2,
+    //            Title = "Modern home in city center",
+    //            PriceInCents = 190000,
+    //            FormattedPrice = "$1,900,00",
+    //            ReviewCount = 34,
+    //            Rating = 4,
+    //        },
+    //    };
+    //}
+
+}

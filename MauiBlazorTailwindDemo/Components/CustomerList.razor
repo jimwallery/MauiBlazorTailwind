@@ -1,0 +1,35 @@
+﻿<h3>Customer List</h3>
+@foreach (var customer in Customers)
+{
+    <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
+        <div class="text-gray-900 text-xl leading-tight font-medium mb-2">
+            @customer.Name
+            @if (customer.IsSubscribedToNewsletter)
+            {
+                <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-500 text-white rounded">Subscribed</span>
+            }
+            else
+            {
+                <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 text-white rounded">Not subscribed</span>
+            }
+        </div>
+        <div class="text-gray-700 text-base mb-4">@customer.Email</div>
+    </div>
+}
+
+@code {
+    public class Customer
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public bool IsSubscribedToNewsletter { get; set; }
+    }
+
+    List<Customer> Customers = new List<Customer>()
+    {
+        new Customer(){Name= "John Doe", Email="john@mail.com", IsSubscribedToNewsletter=true},
+        new Customer(){Name= "Jane Doe", Email="jane@mail.com", IsSubscribedToNewsletter=true},
+        new Customer(){Name= "Janet Doe", Email="janet@mail.com", IsSubscribedToNewsletter=false},
+    };
+}
+
