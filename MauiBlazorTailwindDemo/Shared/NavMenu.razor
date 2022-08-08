@@ -31,13 +31,24 @@
 </header>
 
 @code {
-    private bool collapseNavMenu = true;
+    #if WINDOWS
+        private bool collapseNavMenu = false;
+    #else
+        private bool collapseNavMenu = true;
+    #endif
 
     //switched to "hidden" tailwind css from "collapse" bootstrap css
     private string NavMenuCssClass => collapseNavMenu ? "hidden" : null;
 
 	private void ToggleNavMenu()
 	{
-		collapseNavMenu = !collapseNavMenu;
+
+       #if WINDOWS
+           
+       #else
+            collapseNavMenu = !collapseNavMenu;
+        #endif
+      
+       
 	}
 }
